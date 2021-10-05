@@ -17,7 +17,7 @@ router.get("/:id", getById(), (req, res, next) => {
   res.json(req.user);
 });
 
-//POST
+//POST /api/members
 router.post("/", validateMemberPost(), (req, res, next) => {
   const credentials = req.body;
   Members.postMember(credentials)
