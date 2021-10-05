@@ -9,7 +9,12 @@
     "server": "cross-env NODE_ENV=development nodemon --require dotenv/config index.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "migrateh": "heroku run knex migrate:latest -a members-project-db",
+    "rollbackh": "heroku run knex migrate:rollback -a members-project-db",
+    "seedh": "heroku run knex seed:run -a members-project-db",
+    "databaseh": "heroku pg:psql -a members-project-db",
+    "deploy": "git push heroku main"
   },
   "engines": {
     "node": "16.10.0",
