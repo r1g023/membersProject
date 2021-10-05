@@ -8,7 +8,13 @@ const {
 //GET /api/members
 router.get("/", (req, res, next) => {
   Members.get()
-    .then((user) => res.json(user))
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        res.status(404).json({ message: "no users found" });
+      }
+    })
     .catch((err) => next(err));
 });
 
