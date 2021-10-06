@@ -11,7 +11,9 @@ function getById() {
       .then((user) => {
         user
           ? ((req.user = user), next())
-          : res.json({ message: `cant find user of id # ${req.params.id}` });
+          : res
+              .status(401)
+              .json({ message: `cant find user of id # ${req.params.id}` });
       })
       .catch((err) => next(err));
   };
